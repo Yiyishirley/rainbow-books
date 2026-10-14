@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rainbow Books - independent Melbourne bookseller since 1946. Shop print books and e-books, click and collect, events and author services.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 26a12 12 0 0124 0' fill='none' stroke='%23e53935' stroke-width='3'/%3E%3Cpath d='M8 26a8 8 0 0116 0' fill='none' stroke='%23fbc02d' stroke-width='3'/%3E%3Cpath d='M12 26a4 4 0 018 0' fill='none' stroke='%2343a047' stroke-width='3'/%3E%3C/svg%3E">
+<title>Rainbow Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#f7f8f6; --card:#ffffff; --ink:#17203a; --muted:#5b6377; --line:#dfe2e8;
+  --accent:#0d6b62; --accent-ink:#ffffff; --soft:#e7f1ef; --warn:#a14a00; --bad:#b3261e; --ok:#1f6b2a;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r1:#d7263d; --r2:#f46036; --r3:#e2b007; --r4:#2e9d4f; --r5:#1b6ec2; --r6:#5b3fa8;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121726; --card:#1a2033; --ink:#e9ecf4; --muted:#a3abc0; --line:#2c3450;
+  --accent:#4fc1b2; --accent-ink:#0b1a18; --soft:#1d3532; --warn:#f0a35a; --bad:#ff8a80; --ok:#7bd88f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121726; --card:#1a2033; --ink:#e9ecf4; --muted:#a3abc0; --line:#2c3450;
+  --accent:#4fc1b2; --accent-ink:#0b1a18; --soft:#1d3532; --warn:#f0a35a; --bad:#ff8a80; --ok:#7bd88f; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.spectrum{display:flex;height:6px}.spectrum i{flex:1}
+.spectrum i:nth-child(1){background:var(--r1)}.spectrum i:nth-child(2){background:var(--r2)}.spectrum i:nth-child(3){background:var(--r3)}
+.spectrum i:nth-child(4){background:var(--r4)}.spectrum i:nth-child(5){background:var(--r5)}.spectrum i:nth-child(6){background:var(--r6)}
+header.site{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:18px;padding-block:12px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.5px;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
+.logo .arc{width:34px;height:18px;border-radius:34px 34px 0 0;background:conic-gradient(from 270deg at 50% 100%,var(--r1),var(--r2),var(--r3),var(--r4),var(--r5),var(--r6) 180deg,transparent 0);position:relative}
+.logo .arc:after{content:"";position:absolute;left:9px;right:9px;bottom:0;height:8px;border-radius:16px 16px 0 0;background:var(--paper)}
+nav.main{display:flex;gap:4px;flex-wrap:wrap;font-family:var(--display);font-size:15px}
+nav.main a{text-decoration:none;color:var(--ink);padding:7px 10px;border-radius:6px}
+nav.main a[aria-current="page"]{background:var(--soft);color:var(--accent);font-weight:700}
+.tools{margin-left:auto;display:flex;gap:10px;align-items:center}
+.cartbtn{font-family:var(--display);font-weight:700;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:14px}
+.cartbtn b{background:var(--ink);color:var(--paper);border-radius:10px;padding:0 7px;margin-left:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.12;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1px}
+h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.4px}
+h3{font-size:19px;font-weight:700}
+.eyebrow{font-family:var(--display);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono);font-size:13px}
+main{padding-block:28px 60px}
+section{display:grid;gap:18px;margin-bottom:44px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-block:18px 8px;margin-bottom:40px}
+.hero p{font-size:19px;max-width:34em}
+.hero .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;transform:rotate(-2deg)}
+.btn{font-family:var(--display);font-weight:700;font-size:15px;border-radius:8px;padding:11px 18px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.pri{background:var(--accent);color:var(--accent-ink)}
+.btn.sec{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn.small{padding:7px 12px;font-size:14px}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--r5);outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.book{display:grid;gap:8px;text-decoration:none;color:var(--ink)}
+.cover{aspect-ratio:2/3;max-width:100%;border-radius:4px 8px 8px 4px;padding:14px 12px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:inset 6px 0 0 rgba(0,0,0,.18),0 6px 14px rgba(20,25,45,.18)}
+.cover b{font-family:var(--display);font-size:clamp(15px,1.6vw,19px);line-height:1.1}
+.cover small{font-family:var(--display);font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:.9}
+.price{font-family:var(--mono);font-size:14px}
+.tag{display:inline-block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;border-radius:4px;padding:2px 7px;background:var(--soft);color:var(--accent)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.side{display:grid;grid-template-columns:230px 1fr;gap:26px}
+label{display:block;font-family:var(--display);font-size:14px;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.field{display:grid;gap:2px}
+.err{color:var(--bad);font-size:14px;min-height:1.2em}
+input[aria-invalid="true"]{border-color:var(--bad)}
+.form{display:grid;gap:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer}
+.opt input{width:auto;margin-top:4px}
+.opt:has(input:checked){border-color:var(--accent);background:var(--soft)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th{font-family:var(--display);font-size:13px;color:var(--muted)}
+.notice{border-left:4px solid var(--accent);background:var(--soft);padding:12px 14px;border-radius:0 8px 8px 0}
+.event{display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.date{font-family:var(--display);text-align:center;border:1.5px solid var(--ink);border-radius:8px;padding:6px}
+.date b{display:block;font-size:28px;line-height:1}.date span{font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--display);font-size:14px}
+.steps span{padding:6px 12px;border-radius:20px;border:1.5px solid var(--line);color:var(--muted)}
+.steps span.on{border-color:var(--accent);color:var(--accent);font-weight:700}
+.steps span.done{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom, 0px));background:var(--ink);color:var(--paper);font-family:var(--display);padding:10px 18px;border-radius:24px;z-index:50}
+footer{border-top:1px solid var(--line);padding-block:26px;font-size:15px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+.fgrid a{display:block;text-decoration:none;color:var(--muted);padding:2px 0}
+.fgrid a.logo{display:flex;color:var(--ink)}
+.proto{font-family:var(--display);font-size:13px;background:var(--ink);color:var(--paper);text-align:center;padding:6px 12px}
+.badge{font-family:var(--display);font-size:12px;font-weight:700;padding:3px 8px;border-radius:12px}
+.b-ok{background:var(--soft);color:var(--ok)}.b-low{background:var(--soft);color:var(--warn)}
+@media (max-width:820px){.hero,.split,.side,.cols3,.fgrid{grid-template-columns:1fr}.hero .stack{display:none}.two{grid-template-columns:1fr}.event{grid-template-columns:70px 1fr}.event .btn{grid-column:2}}
+@media (prefers-reduced-motion:no-preference){.cover{transition:transform .2s}.book:hover .cover{transform:translateY(-4px)}}
+</style>
+</head>
+<body>
+
+
+<div class="proto">Student prototype (ISYS1051, RMIT University) &middot; buttons and forms work as a demonstration only &ndash; no orders, payments or bookings are processed</div>
+<header class="site">
+  <div class="spectrum"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap bar">
+    <a class="logo" href="#home"><span class="arc" aria-hidden="true"></span>Rainbow Books</a>
+    <nav class="main" aria-label="Main">
+      <a href="#shop">Shop books</a><a href="#ebooks">E-books</a><a href="#events">Events &amp; clubs</a>
+      <a href="#stores">Stores</a><a href="#authors">For authors</a><a href="#rewards">Rewards</a>
+    </nav>
+    <div class="tools"><a href="#account" class="muted" style="font-family:var(--display);font-size:14px">Sign in</a>
+      <button class="cartbtn" id="cartBtn" onclick="go('cart')">Cart <b id="cartCount">0</b></button></div>
+  </div>
+</header>
+<main class="wrap" id="view"></main>
+<footer><div class="wrap fgrid">
+  <div><a class="logo" href="#home" style="font-size:20px"><span class="arc"></span>Rainbow Books</a>
+  <p class="muted" style="max-width:30em">Victorian booksellers and publishers since 1946. 44 stores across Melbourne and regional Victoria, staffed by people who read.</p></div>
+  <div><b style="font-family:var(--display)">Shop</b><a href="#shop">All books</a><a href="#ebooks">E-books</a><a href="#stores">Click &amp; collect</a></div>
+  <div><b style="font-family:var(--display)">Community</b><a href="#events">Events &amp; book clubs</a><a href="#rewards">Rainbow Rewards</a><a href="#authors">Publish with us</a></div>
+  <div><b style="font-family:var(--display)">Business</b><a href="#franchise">Franchise partners</a><a href="#stores">Contact a store</a><a href="#about">About us</a></div>
+</div></footer>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+const BOOKS = [
+ {id:"lighthouse",t:"The Lighthouse Year",a:"Veronica Watson",p:29.99,e:14.99,c:"#1b6ec2",g:"Fiction",rb:true,st:"In stock",isbn:"978-0-648-12345-1",blurb:"A keeper's daughter, a failing light on the Bass Strait and the year that changed a family. Veronica Watson's most loved novel, published by Rainbow Publishing."},
+ {id:"fitzroy",t:"Winter in Fitzroy",a:"Jonathan Croft",p:27.99,e:12.99,c:"#5b3fa8",g:"Fiction",rb:true,st:"In stock",isbn:"978-0-648-22871-0",blurb:"Three flatmates, one terrace house and a Melbourne winter that refuses to end."},
+ {id:"gardens",t:"Gardens of Victoria",a:"Ruth Okafor",p:49.99,e:null,c:"#2e9d4f",g:"Non-fiction",st:"Low stock",isbn:"978-1-760-55120-4",blurb:"Forty public and private gardens photographed across four seasons."},
+ {id:"midnight",t:"The Midnight Garden",a:"Lena Park",p:19.99,e:9.99,c:"#d7263d",g:"Young adult",st:"Order in",isbn:"978-0-143-77821-9",blurb:"A YA mystery set in a botanical garden that only opens after dark."},
+ {id:"cookbook",t:"Melbourne Cookbook",a:"Sam Delaney",p:44.99,e:null,c:"#f46036",g:"Food",st:"In stock",isbn:"978-1-922-40113-2",blurb:"One hundred recipes from the city's laneways, markets and kitchens."},
+ {id:"wombat",t:"Wombat Builds a Boat",a:"Maddy Lee",p:24.99,e:null,c:"#e2b007",g:"Children",rb:true,st:"In stock",isbn:"978-0-648-33002-7",blurb:"A picture book about patience, planks and very small waves. Ages 3 to 7."},
+ {id:"riverline",t:"Riverline",a:"Tom Haddad",p:32.99,e:16.99,c:"#0d6b62",g:"Crime",st:"In stock",isbn:"978-1-761-10442-6",blurb:"A body on the Yarra and a detective two weeks from retirement."},
+ {id:"stars",t:"Small Stars Over Bendigo",a:"Priya Nair",p:22.99,e:10.99,c:"#33415c",g:"Young adult",st:"In stock",isbn:"978-0-648-44190-8",blurb:"A girl, a telescope and the summer her town forgot to look up."},
+];
+const EVENTS = [
+ {d:"23",m:"Oct",t:"Veronica Watson in conversation",w:"Collins Street",time:"6:30 pm",k:"Author talk & signing",cap:"38 seats left"},
+ {d:"28",m:"Oct",t:"Young Adult Book Club: The Midnight Garden",w:"Box Hill",time:"4:00 pm",k:"Book club (15–24)",cap:"12 places left"},
+ {d:"02",m:"Nov",t:"Story time: Wombat Builds a Boat",w:"Ballarat",time:"10:30 am",k:"Children",cap:"Free"},
+ {d:"09",m:"Nov",t:"Self-publishing workshop",w:"Online",time:"7:00 pm",k:"For authors",cap:"$35"},
+];
+const STORES = [
+ ["Collins Street (flagship)","Melbourne CBD","Company","Mon–Sun 9–9"],["Box Hill","Eastern suburbs","Company","Mon–Sun 9–6"],
+ ["Eastpoint","Eastern suburbs","Franchise","Mon–Sat 9–5:30"],["Geelong Central","Geelong","Franchise","Mon–Sat 9–5:30"],
+ ["Ballarat","Ballarat","Company","Mon–Sat 9–5:30"],["Bendigo","Bendigo","Company","Mon–Sat 9–5:30"]];
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("rb-cart") || "[]"); } catch (e) { cart = []; }
+const save = () => { try { localStorage.setItem("rb-cart", JSON.stringify(cart)); } catch (e) {} };
+const $ = (s) => document.querySelector(s);
+const money = (n) => "$" + n.toFixed(2);
+const book = (id) => BOOKS.find((b) => b.id === id);
+function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,2600);}
+function go(r){location.hash=r;}
+function cover(b){return `<div class="cover" style="background:${b.c}"><small>${b.rb?"Rainbow Publishing":b.g}</small><div><b>${b.t}</b><div style="font-size:13px;margin-top:6px;opacity:.9">${b.a}</div></div></div>`;}
+function card(b){return `<a class="book" href="#book-${b.id}">${cover(b)}<div><div style="font-family:var(--display);font-weight:700">${b.t}</div><div class="muted" style="font-size:15px">${b.a}</div><div class="price">${money(b.p)}${b.e?` &middot; e-book ${money(b.e)}`:""}</div></div></a>`;}
+function addToCart(id,fmt){const b=book(id);const price=fmt==="E-book"?b.e:b.p;const ex=cart.find(i=>i.id===id&&i.f===fmt);if(ex)ex.q++;else cart.push({id,f:fmt,q:1,p:price});save();renderCount();toast(`Added “${b.t}” (${fmt}) to your cart`);}
+function renderCount(){$("#cartCount").textContent=cart.reduce((s,i)=>s+i.q,0);}
+const sub = () => cart.reduce((s,i)=>s+i.q*i.p,0);
+const physical = () => cart.some(i=>i.f!=="E-book");
+
+const V = {};
+V.home = () => `
+<div class="hero"><div style="display:grid;gap:18px"><span class="eyebrow">Booksellers since 1946 &middot; 44 Victorian stores</span>
+<h1>Books at the end of the rainbow.</h1>
+<p>Browse online, reserve a copy for click &amp; collect in two hours, or ask one of our booksellers what to read next. Rainbow e-books are only sold here.</p>
+<div class="row"><a class="btn pri" href="#shop">Shop books</a><a class="btn sec" href="#events">See this month's events</a></div></div>
+<div class="stack" aria-hidden="true">${[0,3,5].map(i=>cover(BOOKS[i])).join("")}</div></div>
+<section><div class="row" style="justify-content:space-between"><h2>New and talked about</h2><a href="#shop" style="font-family:var(--display)">All books &rarr;</a></div><div class="grid">${BOOKS.slice(0,5).map(card).join("")}</div></section>
+<section class="cols3">
+<div class="panel" style="display:grid;gap:10px"><span class="eyebrow">Click &amp; collect</span><h3>Ready in two hours</h3><p class="muted" style="margin:0">Live stock for every store. Reserve online and pay when you collect.</p><a href="#stores" style="font-family:var(--display)">Find a store &rarr;</a></div>
+<div class="panel" style="display:grid;gap:10px"><span class="eyebrow">Rainbow Rewards</span><h3>A $10 voucher for every $200</h3><p class="muted" style="margin:0">Free to join. Members get early event bookings and their birthday book at 20% off.</p><a href="#rewards" style="font-family:var(--display)">Join Rewards &rarr;</a></div>
+<div class="panel" style="display:grid;gap:10px"><span class="eyebrow">For authors</span><h3>Publish with Rainbow</h3><p class="muted" style="margin:0">Submit a manuscript, or choose an editing, design and printing package for your own book.</p><a href="#authors" style="font-family:var(--display)">Author services &rarr;</a></div>
+</section>
+<section><div class="row" style="justify-content:space-between"><h2>Coming up in store</h2><a href="#events" style="font-family:var(--display)">All events &rarr;</a></div><div class="panel">${EVENTS.slice(0,2).map(eventRow).join("")}</div></section>`;
+
+V.shop = (filter) => { const g = filter || "All"; const list = BOOKS.filter(b=>g==="All"||b.g===g);
+return `<div class="side"><aside class="form" style="align-content:start"><label for="q">Search</label><input id="q" placeholder="Title, author or ISBN" oninput="searchBooks(this.value)">
+<div><label>Category</label>${["All","Fiction","Crime","Young adult","Children","Non-fiction","Food"].map(c=>`<div><a href="#shop-${c.replace(/ /g,"_")}" style="text-decoration:none;font-family:var(--display);${c===g?"font-weight:700":""}">${c}</a></div>`).join("")}</div>
+<div><label for="fmt">Format</label><select id="fmt"><option>Print and e-book</option><option>Print only</option><option>E-book only</option></select></div>
+<div><label for="avail">Availability</label><select id="avail"><option>Any store</option><option>Collins Street (flagship)</option><option>Box Hill</option><option>Eastpoint</option></select></div></aside>
+<section style="margin:0;align-content:start"><div><span class="eyebrow">Shop</span><h1 style="font-size:40px">${g==="All"?"All books":g}</h1></div><p class="muted" id="count" style="margin:0">${list.length} titles</p><div class="grid" id="results">${list.map(card).join("")}</div></section></div>`;};
+window.searchBooks = (q) => { q=q.toLowerCase(); const l=BOOKS.filter(b=>(b.t+b.a+b.isbn).toLowerCase().includes(q)); $("#results").innerHTML=l.map(card).join("")||`<p class="muted">No books match “${q}”. Try an author's surname or an ISBN.</p>`; $("#count").textContent=`${l.length} titles`; };
+
+V.ebooks = () => `<section><span class="eyebrow">Rainbow e-books</span><h1>Read Rainbow authors anywhere</h1><p class="muted" style="max-width:40em;margin:0">Rainbow Publishing e-books are sold only on this site. Buy once and download in ePub or PDF, or read in your browser.</p>
+<div class="grid">${BOOKS.filter(b=>b.e).map(b=>`<div class="book">${cover(b)}<div><div style="font-family:var(--display);font-weight:700">${b.t}</div><div class="price">${money(b.e)}</div></div><button class="btn pri small" onclick="addToCart('${b.id}','E-book')">Buy e-book</button></div>`).join("")}</div></section>`;
+
+V.book = (id) => { const b = book(id); if(!b) return V.shop();
+return `<p><a href="#shop" style="font-family:var(--display)">&larr; Back to shop</a></p><div class="split"><div style="max-width:320px">${cover(b)}</div>
+<div style="display:grid;gap:14px;align-content:start"><span class="eyebrow">${b.g}${b.rb?" &middot; Rainbow Publishing":""}</span><h1 style="font-size:42px">${b.t}</h1><p style="margin:0;font-size:19px">by <b>${b.a}</b></p><p style="margin:0">${b.blurb}</p>
+<p class="mono muted" style="margin:0">ISBN ${b.isbn}</p>
+<form class="form panel" onsubmit="event.preventDefault();addToCart('${b.id}',this.f.value)">
+<label>Choose a format</label>
+<label class="opt"><input type="radio" name="f" value="Paperback" checked><span><b>Paperback</b> &middot; <span class="price">${money(b.p)}</span><br><span class="muted" style="font-size:15px">Home delivery or click &amp; collect</span></span></label>
+${b.e?`<label class="opt"><input type="radio" name="f" value="E-book"><span><b>E-book</b> &middot; <span class="price">${money(b.e)}</span><br><span class="muted" style="font-size:15px">Instant download, ePub or PDF</span></span></label>`:""}
+<div class="row"><button class="btn pri" type="submit">Add to cart</button><a class="btn sec" href="#reserve-${b.id}">Reserve in store</a></div></form>
+<div class="panel"><b style="font-family:var(--display)">Stock near you</b><table style="margin-top:6px"><tr><th>Store</th><th>Stock</th></tr>
+<tr><td>Collins Street (flagship)</td><td><span class="badge b-ok">7 in stock</span></td></tr><tr><td>Box Hill</td><td><span class="badge b-low">2 left</span></td></tr><tr><td>Eastpoint</td><td><span class="badge b-ok">4 in stock</span></td></tr></table></div></div></div>`;};
+
+V.reserve = (id) => { const b = book(id) || BOOKS[0];
+return `<section style="max-width:640px"><span class="eyebrow">Click &amp; collect</span><h1 style="font-size:38px">Reserve “${b.t}”</h1>
+<form class="form panel" id="resForm" onsubmit="return submitReserve(event)">
+<div class="field"><label for="rs">Collect from</label><select id="rs">${STORES.map(s=>`<option>${s[0]}</option>`).join("")}</select></div>
+<div class="two"><div class="field"><label for="rn">Your name</label><input id="rn" autocomplete="name" value="Alex Chen"><div class="err" id="rnE"></div></div>
+<div class="field"><label for="rp">Mobile number</label><input id="rp" inputmode="tel" placeholder="04xx xxx xxx"><div class="err" id="rpE"></div></div></div>
+<div class="field"><label for="rq">Copies</label><select id="rq"><option>1</option><option>2</option><option>3</option></select></div>
+<p class="muted" style="margin:0;font-size:15px">We hold reserved books for 3 days. You pay in store when you collect. Rewards members earn points automatically.</p>
+<button class="btn pri" type="submit">Reserve for collection</button></form></section>`;};
+window.submitReserve = (ev) => { ev.preventDefault(); const p=$("#rp"); const ok=/^04\d{2}\s?\d{3}\s?\d{3}$/.test(p.value.trim());
+ p.setAttribute("aria-invalid",!ok); $("#rpE").textContent=ok?"":"Enter an Australian mobile number, for example 0412 345 678.";
+ if(ok){ $("#view").innerHTML=`<section style="max-width:640px"><div class="notice"><b>Reserved.</b> Reference <span class="mono">CC-41782</span>. We'll text ${p.value} when it's ready at ${$("#rs").value}, usually within two hours.</div><a class="btn sec" href="#shop">Keep browsing</a></section>`;} return false; };
+
+V.cart = () => { if(!cart.length) return `<section style="max-width:640px"><h1 style="font-size:38px">Your cart is empty</h1><p class="muted">Add a book from the shop, or buy a Rainbow e-book.</p><a class="btn pri" href="#shop">Shop books</a></section>`;
+return `<section><h1 style="font-size:40px">Your cart</h1><div class="split"><div class="panel" style="overflow-x:auto"><table><tr><th>Book</th><th>Format</th><th>Qty</th><th style="text-align:right">Price</th><th></th></tr>
+${cart.map((i,k)=>`<tr><td>${book(i.id).t}</td><td>${i.f}</td><td><input type="number" min="1" value="${i.q}" style="width:70px" onchange="setQty(${k},this.value)"></td><td class="price" style="text-align:right">${money(i.q*i.p)}</td><td><button class="btn sec small" onclick="removeItem(${k})">Remove</button></td></tr>`).join("")}</table></div>
+<div class="panel form" style="align-content:start"><div class="row" style="justify-content:space-between"><span>Subtotal</span><span class="price">${money(sub())}</span></div>
+<div class="row" style="justify-content:space-between"><span>Delivery</span><span class="price">${physical()?(sub()>=60?"Free":"$7.95"):"– (e-books only)"}</span></div>
+<div class="row" style="justify-content:space-between;font-family:var(--display);font-weight:800;font-size:20px"><span>Total</span><span>${money(sub()+(physical()&&sub()<60?7.95:0))}</span></div>
+<div class="field"><label for="promo">Rewards voucher or promo code</label><div class="row" style="flex-wrap:nowrap"><input id="promo" placeholder="e.g. RAINBOW10"><button class="btn sec small" onclick="toast('Voucher codes are not checked in this prototype')">Apply</button></div></div>
+<a class="btn pri" href="#checkout" style="justify-content:center">Go to checkout</a><span class="muted" style="font-size:14px">Free delivery on orders over $60 in Victoria.</span></div></div></section>`;};
+window.setQty=(k,v)=>{cart[k].q=Math.max(1,parseInt(v)||1);save();renderCount();render();};
+window.removeItem=(k)=>{cart.splice(k,1);save();renderCount();render();};
+
+V.checkout = () => { if(!cart.length) return V.cart();
+const tot = sub()+(physical()&&sub()<60?7.95:0);
+return `<section><div class="steps"><span class="done">Cart</span><span class="on">Delivery &amp; payment</span><span>Confirmation</span></div><h1 style="font-size:40px">Checkout</h1>
+<form class="split" id="pay" onsubmit="return pay(event)" novalidate><div class="form">
+<div class="panel form"><h3>1. Your details</h3><div class="two"><div class="field"><label for="cn">Full name</label><input id="cn" autocomplete="name" value="Alex Chen"></div>
+<div class="field"><label for="ce">Email for receipt${physical()?"":" and e-book download"}</label><input id="ce" type="email" autocomplete="email" value="alex.chen@example.com"></div></div>
+<label class="opt" style="cursor:pointer"><input type="checkbox" id="join" checked><span>Join Rainbow Rewards for free and earn points on this order</span></label></div>
+${physical()?`<div class="panel form"><h3>2. Delivery</h3><label class="opt"><input type="radio" name="dm" value="home" checked onchange="$('#addr').hidden=false;$('#cc').hidden=true"><span><b>Home delivery</b> &middot; 2–4 business days</span></label>
+<label class="opt"><input type="radio" name="dm" value="cc" onchange="$('#addr').hidden=true;$('#cc').hidden=false"><span><b>Click &amp; collect</b> &middot; free, usually ready in 2 hours</span></label>
+<div id="addr" class="form"><div class="field"><label for="ad">Street address</label><input id="ad" autocomplete="street-address" value="12 Smith Street"></div>
+<div class="two"><div class="field"><label for="sb">Suburb</label><input id="sb" value="Fitzroy"></div><div class="field"><label for="pc">Postcode</label><input id="pc" inputmode="numeric" value="3065"></div></div></div>
+<div id="cc" hidden><label for="ccs">Collect from</label><select id="ccs">${STORES.map(s=>`<option>${s[0]}</option>`).join("")}</select></div></div>`:""}
+<div class="panel form"><h3>${physical()?"3":"2"}. Payment</h3><p class="muted" style="margin:0;font-size:15px">Payments are processed securely by our payment gateway. This prototype does not charge cards.</p>
+<div class="field"><label for="card">Card number</label><input id="card" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456"><div class="err" id="cardE"></div></div>
+<div class="two"><div class="field"><label for="exp">Expiry (MM/YY)</label><input id="exp" placeholder="08/29"><div class="err" id="expE"></div></div>
+<div class="field"><label for="cvv">Security code (CVV)</label><input id="cvv" inputmode="numeric" placeholder="123"><div class="err" id="cvvE"></div></div></div>
+<div class="field"><label for="nm">Name on card</label><input id="nm" value="ALEX CHEN"></div></div></div>
+<div class="panel form" style="align-content:start"><h3>Order summary</h3>${cart.map(i=>`<div class="row" style="justify-content:space-between"><span>${i.q} &times; ${book(i.id).t} <span class="muted">(${i.f})</span></span><span class="price">${money(i.q*i.p)}</span></div>`).join("")}
+<div class="row" style="justify-content:space-between;font-family:var(--display);font-weight:800;font-size:20px;border-top:1px solid var(--line);padding-top:10px"><span>Total</span><span>${money(tot)}</span></div>
+<button class="btn pri" type="submit" style="justify-content:center">Pay ${money(tot)}</button><a href="#cart" style="font-family:var(--display);text-align:center">Back to cart</a></div></form></section>`;};
+window.pay = (ev) => { ev.preventDefault();
+ const c=$("#card"),x=$("#exp"),v=$("#cvv"); const cd=c.value.replace(/\s/g,"");
+ const chk=[[c,/^\d{16}$/.test(cd),"#cardE","Enter the 16-digit card number."],[x,/^(0[1-9]|1[0-2])\/\d{2}$/.test(x.value.trim()),"#expE","Use the format MM/YY."],[v,/^\d{3,4}$/.test(v.value.trim()),"#cvvE","Enter the 3 or 4 digits on the back of the card."]];
+ let ok=true; chk.forEach(([el,good,e,msg])=>{el.setAttribute("aria-invalid",!good);$(e).textContent=good?"":msg;if(!good)ok=false;});
+ if(!ok){toast("Please check the highlighted payment details");return false;}
+ const ebook=cart.some(i=>i.f==="E-book"); const tot=money(sub()+(physical()&&sub()<60?7.95:0)); cart=[];save();renderCount();
+ $("#view").innerHTML=`<section style="max-width:720px"><div class="steps"><span class="done">Cart</span><span class="done">Delivery &amp; payment</span><span class="on">Confirmation</span></div>
+ <h1 style="font-size:40px">Thank you, your order is placed</h1><div class="notice">Order <span class="mono">RB-2027-118402</span> &middot; ${tot} paid. A receipt has been sent to ${$("#ce").value}.</div>
+ ${ebook?`<div class="panel"><h3>Your e-book is ready</h3><p class="muted">Download links are in your account and in the receipt email.</p><a class="btn pri small" href="#account">Go to my library</a></div>`:""}
+ <a class="btn sec" href="#shop">Continue shopping</a></section>`; window.scrollTo(0,0); return false; };
+
+function eventRow(e){return `<div class="event"><div class="date"><b>${e.d}</b><span>${e.m}</span></div><div><span class="tag">${e.k}</span><h3 style="margin-top:6px">${e.t}</h3><div class="muted" style="font-size:15px">${e.w} &middot; ${e.time} &middot; ${e.cap}</div></div><a class="btn sec small" href="#book_event">Book a place</a></div>`;}
+V.events = () => `<section><span class="eyebrow">Events &amp; book clubs</span><h1>Meet authors. Join a club.</h1><p class="muted" style="max-width:40em;margin:0">Signings, talks, children's story times and monthly book clubs in our stores. Rewards members can book a week early.</p><div class="panel">${EVENTS.map(eventRow).join("")}</div></section>`;
+V.book_event = () => `<section style="max-width:640px"><span class="eyebrow">Book a place</span><h1 style="font-size:38px">${EVENTS[0].t}</h1><p class="muted" style="margin:0">${EVENTS[0].w} &middot; ${EVENTS[0].d} ${EVENTS[0].m} &middot; ${EVENTS[0].time}</p>
+<form class="form panel" onsubmit="event.preventDefault();this.outerHTML='<div class=notice><b>Booked.</b> Your ticket <span class=mono>EV-3391</span> has been emailed. Bring it on your phone.</div>'">
+<div class="two"><div class="field"><label for="en">Name</label><input id="en" value="Alex Chen"></div><div class="field"><label for="ee">Email</label><input id="ee" type="email" value="alex.chen@example.com"></div></div>
+<div class="field"><label for="et">Tickets</label><select id="et"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+<label class="opt"><input type="checkbox" checked><span>Hold a signed copy of <i>The Lighthouse Year</i> for me to buy on the night</span></label>
+<button class="btn pri" type="submit">Confirm booking</button></form></section>`;
+
+V.stores = () => `<section><span class="eyebrow">Stores</span><h1>Find a Rainbow Books store</h1><div class="row"><input id="sq" placeholder="Suburb or postcode" style="max-width:320px" oninput="filterStores(this.value)"><span class="muted">44 stores &middot; showing nearest 6</span></div>
+<div class="panel" style="overflow-x:auto"><table id="st"><tr><th>Store</th><th>Area</th><th>Type</th><th>Hours</th><th></th></tr>${STORES.map(s=>`<tr><td><b>${s[0]}</b></td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td><td><a href="#shop">Shop this store</a></td></tr>`).join("")}</table></div>
+<p class="muted" style="margin:0">Every store offers click &amp; collect and special orders. Franchise stores are independently owned and operated.</p></section>`;
+window.filterStores=(q)=>{q=q.toLowerCase();document.querySelectorAll("#st tr").forEach((tr,i)=>{if(i)tr.hidden=!tr.textContent.toLowerCase().includes(q);});};
+
+V.authors = () => `<section><span class="eyebrow">For authors</span><h1>Publish with Rainbow</h1><p class="muted" style="max-width:42em;margin:0">Rainbow Publishing has published Victorian writers since 1962. Submit your manuscript for our list, or use our services to publish your own book and sell it in our stores.</p>
+<div class="cols3">${[["Editorial","$1,450","Structural edit and copy edit up to 80,000 words"],["Design & print","$2,900","Cover design, typesetting and 300 printed copies"],["Complete","$4,950","Editorial + design & print, e-book on rainbowbooks.com.au and a launch event"]].map(p=>`<div class="panel form"><span class="eyebrow">Self-publishing</span><h3>${p[0]}</h3><div style="font-family:var(--display);font-size:28px;font-weight:800">${p[1]}</div><p class="muted" style="margin:0">${p[2]}</p><button class="btn sec small" onclick="toast('${p[0]} package added to your enquiry')">Choose ${p[0]}</button></div>`).join("")}</div>
+<div class="split"><form class="panel form" onsubmit="event.preventDefault();this.outerHTML='<div class=notice><b>Manuscript received.</b> Reference MS-0927. Our editors reply within 12 weeks.</div>'">
+<h3>Submit a manuscript</h3><div class="field"><label for="an">Name</label><input id="an"></div><div class="field"><label for="ag">Genre</label><select id="ag"><option>Fiction</option><option>Young adult</option><option>Children</option><option>Non-fiction</option></select></div>
+<div class="field"><label for="af">Manuscript (PDF or Word)</label><input id="af" type="file" accept=".pdf,.doc,.docx"></div><div class="field"><label for="as">Synopsis (300 words)</label><textarea id="as" rows="4"></textarea></div><button class="btn pri" type="submit">Submit manuscript</button></form>
+<div class="panel form" style="align-content:start"><h3>Already a Rainbow author?</h3><p class="muted" style="margin:0">Sign in to the author portal to see sales by store, download royalty statements and request a signing event.</p>
+<div class="field"><label for="ae">Email</label><input id="ae" type="email"></div><div class="field"><label for="ap">Password</label><input id="ap" type="password"></div><button class="btn sec" onclick="toast('Author portal opens in Rainbow One')">Sign in to author portal</button></div></div></section>`;
+
+V.rewards = () => `<section><span class="eyebrow">Rainbow Rewards</span><h1>Read more, earn more</h1><div class="cols3">${[["1 point per $1","Online and in every store, including franchises"],["$10 voucher","For every 200 points"],["First to book","Event bookings open a week early for members"]].map(x=>`<div class="panel"><h3>${x[0]}</h3><p class="muted" style="margin:6px 0 0">${x[1]}</p></div>`).join("")}</div>
+<form class="panel form" style="max-width:640px" onsubmit="event.preventDefault();this.outerHTML='<div class=notice><b>Welcome to Rainbow Rewards.</b> Member number <span class=mono>RR-208144</span>. Show it at the counter or sign in online.</div>'">
+<h3>Join for free</h3><div class="two"><div class="field"><label for="rfn">First name</label><input id="rfn"></div><div class="field"><label for="rln">Last name</label><input id="rln"></div></div>
+<div class="field"><label for="rem">Email</label><input id="rem" type="email"></div><div class="field"><label for="rst">Home store</label><select id="rst">${STORES.map(s=>`<option>${s[0]}</option>`).join("")}</select></div>
+<label class="opt"><input type="checkbox" checked><span>Email me new releases and events at my home store</span></label><button class="btn pri" type="submit">Join Rainbow Rewards</button></form></section>`;
+
+V.account = () => `<section style="max-width:520px"><span class="eyebrow">Your account</span><h1 style="font-size:38px">Sign in</h1><form class="panel form" onsubmit="event.preventDefault();toast('Signed in as Alex Chen (prototype)')">
+<div class="field"><label for="le">Email</label><input id="le" type="email" value="alex.chen@example.com"></div><div class="field"><label for="lp">Password</label><input id="lp" type="password"></div>
+<button class="btn pri" type="submit">Sign in</button><p class="muted" style="margin:0;font-size:15px">New here? <a href="#rewards">Create an account with Rainbow Rewards</a>. Your e-book library and orders appear after you sign in.</p></form></section>`;
+
+V.franchise = () => `<section style="max-width:720px"><span class="eyebrow">Franchise partners</span><h1 style="font-size:40px">Rainbow Books franchise portal</h1><p class="muted" style="margin:0">Order stock, check storage-fee statements based on live sales, and see promotions planned for your store. The portal runs on Rainbow One, the same system our own stores use.</p>
+<div class="split"><form class="panel form" onsubmit="event.preventDefault();toast('Opening Rainbow One for franchise partners')"><h3>Partner sign in</h3><div class="field"><label for="fs">Store</label><select id="fs"><option>Eastpoint</option><option>Geelong Central</option></select></div>
+<div class="field"><label for="fu">Partner ID</label><input id="fu" placeholder="FR-0000"></div><div class="field"><label for="fp">Password</label><input id="fp" type="password"></div><button class="btn pri" type="submit">Sign in</button></form>
+<div class="panel"><h3>Interested in a franchise?</h3><p class="muted">We look for partners who love books and their local community. Tell us where you would like to open a store.</p><a class="btn sec small" href="#about">Contact our franchise team</a></div></div></section>`;
+
+V.about = () => `<section style="max-width:760px"><span class="eyebrow">About us</span><h1>Victorian booksellers since 1946</h1>
+<p>Walter Price opened the first Rainbow Books store on Collins Street, Melbourne, in 1946. Today we have 44 stores across Melbourne and regional Victoria, including 18 independently owned franchises, and our own publishing house, Rainbow Publishing.</p>
+<p>Our booksellers read widely and love recommending books. Ask any of them what to read next.</p>
+<div class="panel"><h3>Contact</h3><p class="muted" style="margin:6px 0 0">Head office: Collins Street, Melbourne VIC 3000<br>Customer service (prototype, not a real number): <span class="mono">03 9000 0000</span></p></div></section>`;
+
+function render(){
+  const h = (location.hash || "#home").slice(1);
+  let [route, ...rest] = h.split("-"); const arg = rest.join("-");
+  if (route === "shop" && arg) { $("#view").innerHTML = V.shop(arg.replace(/_/g," ")); }
+  else if (route === "book" && arg) { $("#view").innerHTML = V.book(arg); }
+  else if (route === "reserve") { $("#view").innerHTML = V.reserve(arg); }
+  else { $("#view").innerHTML = (V[route] || V.home)(); }
+  document.querySelectorAll("nav.main a").forEach(a => { if (a.getAttribute("href").slice(1) === route) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", render);
+renderCount(); render();
+</script>
+
+</body>
+</html>

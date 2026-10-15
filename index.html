@@ -65,6 +65,7 @@ section{display:grid;gap:18px;margin-bottom:44px}
 .book{display:grid;gap:8px;text-decoration:none;color:var(--ink)}
 .cover{aspect-ratio:2/3;max-width:100%;border-radius:4px 8px 8px 4px;padding:14px 12px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:inset 6px 0 0 rgba(0,0,0,.18),0 6px 14px rgba(20,25,45,.18)}
 .cover b{font-family:var(--display);font-size:clamp(15px,1.6vw,19px);line-height:1.1}
+.cover.img{padding:0;overflow:hidden;background:#e8e2d4}.cover.img img{width:100%;height:100%;object-fit:cover;display:block}
 .cover small{font-family:var(--display);font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:.9}
 .price{font-family:var(--mono);font-size:14px}
 .tag{display:inline-block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;border-radius:4px;padding:2px 7px;background:var(--soft);color:var(--accent)}
@@ -128,23 +129,29 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:15px}
   <div><b style="font-family:var(--display)">Shop</b><a href="#shop">All books</a><a href="#ebooks">E-books</a><a href="#stores">Click &amp; collect</a></div>
   <div><b style="font-family:var(--display)">Community</b><a href="#events">Events &amp; book clubs</a><a href="#rewards">Rainbow Rewards</a><a href="#authors">Publish with us</a></div>
   <div><b style="font-family:var(--display)">Business</b><a href="#franchise">Franchise partners</a><a href="#stores">Contact a store</a><a href="#about">About us</a></div>
-</div></footer>
+</div><div class="wrap"><p class="muted" style="font-size:13px;margin:18px 0 0">Classic cover images: public-domain first editions and title pages, Wikimedia Commons.</p></div></footer>
 <div id="toast" class="toast" hidden></div>
 
 <script>
 const BOOKS = [
- {id:"lighthouse",t:"The Lighthouse Year",a:"Veronica Watson",p:29.99,e:14.99,c:"#1b6ec2",g:"Fiction",rb:true,st:"In stock",isbn:"978-0-648-12345-1",blurb:"A keeper's daughter, a failing light on the Bass Strait and the year that changed a family. Veronica Watson's most loved novel, published by Rainbow Publishing."},
- {id:"fitzroy",t:"Winter in Fitzroy",a:"Jonathan Croft",p:27.99,e:12.99,c:"#5b3fa8",g:"Fiction",rb:true,st:"In stock",isbn:"978-0-648-22871-0",blurb:"Three flatmates, one terrace house and a Melbourne winter that refuses to end."},
- {id:"gardens",t:"Gardens of Victoria",a:"Ruth Okafor",p:49.99,e:null,c:"#2e9d4f",g:"Non-fiction",st:"Low stock",isbn:"978-1-760-55120-4",blurb:"Forty public and private gardens photographed across four seasons."},
- {id:"midnight",t:"The Midnight Garden",a:"Lena Park",p:19.99,e:9.99,c:"#d7263d",g:"Young adult",st:"Order in",isbn:"978-0-143-77821-9",blurb:"A YA mystery set in a botanical garden that only opens after dark."},
- {id:"cookbook",t:"Melbourne Cookbook",a:"Sam Delaney",p:44.99,e:null,c:"#f46036",g:"Food",st:"In stock",isbn:"978-1-922-40113-2",blurb:"One hundred recipes from the city's laneways, markets and kitchens."},
- {id:"wombat",t:"Wombat Builds a Boat",a:"Maddy Lee",p:24.99,e:null,c:"#e2b007",g:"Children",rb:true,st:"In stock",isbn:"978-0-648-33002-7",blurb:"A picture book about patience, planks and very small waves. Ages 3 to 7."},
- {id:"riverline",t:"Riverline",a:"Tom Haddad",p:32.99,e:16.99,c:"#0d6b62",g:"Crime",st:"In stock",isbn:"978-1-761-10442-6",blurb:"A body on the Yarra and a detective two weeks from retirement."},
- {id:"stars",t:"Small Stars Over Bendigo",a:"Priya Nair",p:22.99,e:10.99,c:"#33415c",g:"Young adult",st:"In stock",isbn:"978-0-648-44190-8",blurb:"A girl, a telescope and the summer her town forgot to look up."},
+ {id:"gatsby",t:"The Great Gatsby",a:"F. Scott Fitzgerald",p:16.99,e:4.99,img:"gatsby",g:"Classics",st:"In stock",yr:1925,blurb:"Jay Gatsby's lavish parties on Long Island hide one hope: to win back Daisy Buchanan. Fitzgerald's portrait of the Jazz Age, with Francis Cugat's famous 1925 cover."},
+ {id:"keller",t:"The Story of My Life",a:"Helen Keller",p:17.99,e:4.99,img:"keller",g:"Memoir",st:"In stock",yr:1903,blurb:"Helen Keller's own account of how, deaf and blind from infancy, she learned to read, write and speak with her teacher Anne Sullivan. Includes the essay Three Days to See."},
+ {id:"alice",t:"Alice's Adventures in Wonderland",a:"Lewis Carroll",p:19.99,e:3.99,img:"alice",g:"Children",st:"In stock",yr:1865,blurb:"Down the rabbit hole with the White Rabbit, the Mad Hatter and the Queen of Hearts. Illustrated by John Tenniel. Ages 8 and up."},
+ {id:"lighthouse",t:"The Lighthouse Year",a:"Veronica Watson",p:29.99,e:14.99,c:"#1b6ec2",g:"Fiction",rb:true,st:"In stock",blurb:"A keeper's daughter, a failing light on the Bass Strait and the year that changed a family. Veronica Watson's most loved novel, published by Rainbow Publishing."},
+ {id:"pride",t:"Pride and Prejudice",a:"Jane Austen",p:15.99,e:3.99,img:"pride",g:"Classics",st:"In stock",yr:1813,blurb:"Elizabeth Bennet, Mr Darcy and the most famous first impression in English fiction."},
+ {id:"hound",t:"The Hound of the Baskervilles",a:"Arthur Conan Doyle",p:16.99,e:3.99,img:"hound",g:"Crime & mystery",st:"In stock",yr:1902,blurb:"A family curse, a moor in Devon and Sherlock Holmes's most celebrated case."},
+ {id:"anne",t:"Anne of Green Gables",a:"L. M. Montgomery",p:17.99,e:3.99,img:"anne",g:"Young adult",st:"Low stock",yr:1908,blurb:"Red-haired, talkative orphan Anne Shirley arrives at Green Gables by mistake and changes everyone around her. This month's YA book club pick."},
+ {id:"wombat",t:"Wombat Builds a Boat",a:"Maddy Lee",p:24.99,e:null,c:"#e2b007",g:"Children",rb:true,st:"In stock",blurb:"A picture book about patience, planks and very small waves. Ages 3 to 7. Published by Rainbow Publishing."},
+ {id:"dracula",t:"Dracula",a:"Bram Stoker",p:16.99,e:3.99,img:"dracula",g:"Crime & mystery",st:"In stock",yr:1897,blurb:"Told through letters and diaries, Jonathan Harker's journey to Transylvania becomes the story that defined the vampire."},
+ {id:"willows",t:"The Wind in the Willows",a:"Kenneth Grahame",p:18.99,e:3.99,img:"willows",g:"Children",st:"In stock",yr:1908,blurb:"Mole, Ratty, Badger and the irrepressible Mr Toad on the riverbank. A read-aloud classic for all ages."},
+ {id:"fitzroy",t:"Winter in Fitzroy",a:"Jonathan Croft",p:27.99,e:12.99,c:"#5b3fa8",g:"Fiction",rb:true,st:"In stock",blurb:"Three flatmates, one terrace house and a Melbourne winter that refuses to end. Published by Rainbow Publishing."},
+ {id:"frankenstein",t:"Frankenstein",a:"Mary Shelley",p:15.99,e:3.99,img:"frankenstein",g:"Classics",st:"Order in",yr:1818,blurb:"Victor Frankenstein builds a creature and abandons it. The novel that started science fiction, first published in 1818."},
+ {id:"moby",t:"Moby-Dick",a:"Herman Melville",p:19.99,e:4.99,img:"moby",g:"Classics",st:"In stock",yr:1851,blurb:"Captain Ahab, the Pequod and the hunt for the white whale."},
+ {id:"dorian",t:"The Picture of Dorian Gray",a:"Oscar Wilde",p:15.99,e:3.99,img:"dorian",g:"Classics",st:"In stock",yr:1890,blurb:"A portrait ages while its subject stays young. Wilde's only novel, first published in Lippincott's Monthly Magazine in July 1890."},
 ];
 const EVENTS = [
  {d:"23",m:"Oct",t:"Veronica Watson in conversation",w:"Collins Street",time:"6:30 pm",k:"Author talk & signing",cap:"38 seats left"},
- {d:"28",m:"Oct",t:"Young Adult Book Club: The Midnight Garden",w:"Box Hill",time:"4:00 pm",k:"Book club (15–24)",cap:"12 places left"},
+ {d:"28",m:"Oct",t:"Young Adult Book Club: Anne of Green Gables",w:"Box Hill",time:"4:00 pm",k:"Book club (15–24)",cap:"12 places left"},
  {d:"02",m:"Nov",t:"Story time: Wombat Builds a Boat",w:"Ballarat",time:"10:30 am",k:"Children",cap:"Free"},
  {d:"09",m:"Nov",t:"Self-publishing workshop",w:"Online",time:"7:00 pm",k:"For authors",cap:"$35"},
 ];
@@ -160,7 +167,7 @@ const money = (n) => "$" + n.toFixed(2);
 const book = (id) => BOOKS.find((b) => b.id === id);
 function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,2600);}
 function go(r){location.hash=r;}
-function cover(b){return `<div class="cover" style="background:${b.c}"><small>${b.rb?"Rainbow Publishing":b.g}</small><div><b>${b.t}</b><div style="font-size:13px;margin-top:6px;opacity:.9">${b.a}</div></div></div>`;}
+function cover(b){if(b.img)return `<div class="cover img"><img src="covers/${b.img}.jpg" alt="Cover of ${b.t}" loading="lazy"></div>`;return `<div class="cover" style="background:${b.c}"><small>${b.rb?"Rainbow Publishing":b.g}</small><div><b>${b.t}</b><div style="font-size:13px;margin-top:6px;opacity:.9">${b.a}</div></div></div>`;}
 function card(b){return `<a class="book" href="#book-${b.id}">${cover(b)}<div><div style="font-family:var(--display);font-weight:700">${b.t}</div><div class="muted" style="font-size:15px">${b.a}</div><div class="price">${money(b.p)}${b.e?` &middot; e-book ${money(b.e)}`:""}</div></div></a>`;}
 function addToCart(id,fmt){const b=book(id);const price=fmt==="E-book"?b.e:b.p;const ex=cart.find(i=>i.id===id&&i.f===fmt);if(ex)ex.q++;else cart.push({id,f:fmt,q:1,p:price});save();renderCount();toast(`Added “${b.t}” (${fmt}) to your cart`);}
 function renderCount(){$("#cartCount").textContent=cart.reduce((s,i)=>s+i.q,0);}
@@ -173,7 +180,7 @@ V.home = () => `
 <h1>Books at the end of the rainbow.</h1>
 <p>Browse online, reserve a copy for click &amp; collect in two hours, or ask one of our booksellers what to read next. Rainbow e-books are only sold here.</p>
 <div class="row"><a class="btn pri" href="#shop">Shop books</a><a class="btn sec" href="#events">See this month's events</a></div></div>
-<div class="stack" aria-hidden="true">${[0,3,5].map(i=>cover(BOOKS[i])).join("")}</div></div>
+<div class="stack" aria-hidden="true">${["gatsby","keller","alice"].map(i=>cover(book(i))).join("")}</div></div>
 <section><div class="row" style="justify-content:space-between"><h2>New and talked about</h2><a href="#shop" style="font-family:var(--display)">All books &rarr;</a></div><div class="grid">${BOOKS.slice(0,5).map(card).join("")}</div></section>
 <section class="cols3">
 <div class="panel" style="display:grid;gap:10px"><span class="eyebrow">Click &amp; collect</span><h3>Ready in two hours</h3><p class="muted" style="margin:0">Live stock for every store. Reserve online and pay when you collect.</p><a href="#stores" style="font-family:var(--display)">Find a store &rarr;</a></div>
@@ -183,12 +190,12 @@ V.home = () => `
 <section><div class="row" style="justify-content:space-between"><h2>Coming up in store</h2><a href="#events" style="font-family:var(--display)">All events &rarr;</a></div><div class="panel">${EVENTS.slice(0,2).map(eventRow).join("")}</div></section>`;
 
 V.shop = (filter) => { const g = filter || "All"; const list = BOOKS.filter(b=>g==="All"||b.g===g);
-return `<div class="side"><aside class="form" style="align-content:start"><label for="q">Search</label><input id="q" placeholder="Title, author or ISBN" oninput="searchBooks(this.value)">
-<div><label>Category</label>${["All","Fiction","Crime","Young adult","Children","Non-fiction","Food"].map(c=>`<div><a href="#shop-${c.replace(/ /g,"_")}" style="text-decoration:none;font-family:var(--display);${c===g?"font-weight:700":""}">${c}</a></div>`).join("")}</div>
+return `<div class="side"><aside class="form" style="align-content:start"><label for="q">Search</label><input id="q" placeholder="Title, author or category" oninput="searchBooks(this.value)">
+<div><label>Category</label>${["All","Classics","Fiction","Crime & mystery","Young adult","Children","Memoir"].map(c=>`<div><a href="#shop-${c.replace(/ /g,"_")}" style="text-decoration:none;font-family:var(--display);${c===g?"font-weight:700":""}">${c}</a></div>`).join("")}</div>
 <div><label for="fmt">Format</label><select id="fmt"><option>Print and e-book</option><option>Print only</option><option>E-book only</option></select></div>
 <div><label for="avail">Availability</label><select id="avail"><option>Any store</option><option>Collins Street (flagship)</option><option>Box Hill</option><option>Eastpoint</option></select></div></aside>
 <section style="margin:0;align-content:start"><div><span class="eyebrow">Shop</span><h1 style="font-size:40px">${g==="All"?"All books":g}</h1></div><p class="muted" id="count" style="margin:0">${list.length} titles</p><div class="grid" id="results">${list.map(card).join("")}</div></section></div>`;};
-window.searchBooks = (q) => { q=q.toLowerCase(); const l=BOOKS.filter(b=>(b.t+b.a+b.isbn).toLowerCase().includes(q)); $("#results").innerHTML=l.map(card).join("")||`<p class="muted">No books match “${q}”. Try an author's surname or an ISBN.</p>`; $("#count").textContent=`${l.length} titles`; };
+window.searchBooks = (q) => { q=q.toLowerCase(); const l=BOOKS.filter(b=>(b.t+" "+b.a+" "+b.g).toLowerCase().includes(q)); $("#results").innerHTML=l.map(card).join("")||`<p class="muted">No books match “${q}”. Try an author's surname or an ISBN.</p>`; $("#count").textContent=`${l.length} titles`; };
 
 V.ebooks = () => `<section><span class="eyebrow">Rainbow e-books</span><h1>Read Rainbow authors anywhere</h1><p class="muted" style="max-width:40em;margin:0">Rainbow Publishing e-books are sold only on this site. Buy once and download in ePub or PDF, or read in your browser.</p>
 <div class="grid">${BOOKS.filter(b=>b.e).map(b=>`<div class="book">${cover(b)}<div><div style="font-family:var(--display);font-weight:700">${b.t}</div><div class="price">${money(b.e)}</div></div><button class="btn pri small" onclick="addToCart('${b.id}','E-book')">Buy e-book</button></div>`).join("")}</div></section>`;
@@ -196,7 +203,7 @@ V.ebooks = () => `<section><span class="eyebrow">Rainbow e-books</span><h1>Read 
 V.book = (id) => { const b = book(id); if(!b) return V.shop();
 return `<p><a href="#shop" style="font-family:var(--display)">&larr; Back to shop</a></p><div class="split"><div style="max-width:320px">${cover(b)}</div>
 <div style="display:grid;gap:14px;align-content:start"><span class="eyebrow">${b.g}${b.rb?" &middot; Rainbow Publishing":""}</span><h1 style="font-size:42px">${b.t}</h1><p style="margin:0;font-size:19px">by <b>${b.a}</b></p><p style="margin:0">${b.blurb}</p>
-<p class="mono muted" style="margin:0">ISBN ${b.isbn}</p>
+<p class="mono muted" style="margin:0">${b.rb?"Rainbow Publishing · new release":"Rainbow Classics edition · first published "+b.yr}</p>
 <form class="form panel" onsubmit="event.preventDefault();addToCart('${b.id}',this.f.value)">
 <label>Choose a format</label>
 <label class="opt"><input type="radio" name="f" value="Paperback" checked><span><b>Paperback</b> &middot; <span class="price">${money(b.p)}</span><br><span class="muted" style="font-size:15px">Home delivery or click &amp; collect</span></span></label>

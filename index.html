@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Rainbow Books - independent Melbourne bookseller since 1946. Shop print books and e-books, click and collect, events and author services.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 26a12 12 0 0124 0' fill='none' stroke='%23e53935' stroke-width='3'/%3E%3Cpath d='M8 26a8 8 0 0116 0' fill='none' stroke='%23fbc02d' stroke-width='3'/%3E%3Cpath d='M12 26a4 4 0 018 0' fill='none' stroke='%2343a047' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <title>Rainbow Books</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +34,7 @@ a{color:var(--accent)}
 .spectrum i:nth-child(4){background:var(--r4)}.spectrum i:nth-child(5){background:var(--r5)}.spectrum i:nth-child(6){background:var(--r6)}
 header.site{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:18px;padding-block:12px;flex-wrap:wrap}
+.logo .mark{display:block}
 .logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.5px;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
 .logo .arc{width:34px;height:18px;border-radius:34px 34px 0 0;background:conic-gradient(from 270deg at 50% 100%,var(--r1),var(--r2),var(--r3),var(--r4),var(--r5),var(--r6) 180deg,transparent 0);position:relative}
 .logo .arc:after{content:"";position:absolute;left:9px;right:9px;bottom:0;height:8px;border-radius:16px 16px 0 0;background:var(--paper)}
@@ -113,7 +114,7 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:15px}
 <header class="site">
   <div class="spectrum"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap bar">
-    <a class="logo" href="#home"><span class="arc" aria-hidden="true"></span>Rainbow Books</a>
+    <a class="logo" href="#home"><img class="mark" src="logo.svg" alt="" width="34" height="34">Rainbow Books</a>
     <nav class="main" aria-label="Main">
       <a href="#shop">Shop books</a><a href="#ebooks">E-books</a><a href="#events">Events &amp; clubs</a>
       <a href="#stores">Stores</a><a href="#authors">For authors</a><a href="#rewards">Rewards</a>
@@ -124,7 +125,7 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:15px}
 </header>
 <main class="wrap" id="view"></main>
 <footer><div class="wrap fgrid">
-  <div><a class="logo" href="#home" style="font-size:20px"><span class="arc"></span>Rainbow Books</a>
+  <div><a class="logo" href="#home" style="font-size:20px"><img class="mark" src="logo.svg" alt="" width="30" height="30">Rainbow Books</a>
   <p class="muted" style="max-width:30em">Victorian booksellers and publishers since 1946. 44 stores across Melbourne and regional Victoria, staffed by people who read.</p></div>
   <div><b style="font-family:var(--display)">Shop</b><a href="#shop">All books</a><a href="#ebooks">E-books</a><a href="#stores">Click &amp; collect</a></div>
   <div><b style="font-family:var(--display)">Community</b><a href="#events">Events &amp; book clubs</a><a href="#rewards">Rainbow Rewards</a><a href="#authors">Publish with us</a></div>
